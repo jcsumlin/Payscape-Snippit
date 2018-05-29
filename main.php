@@ -1,9 +1,10 @@
 <?php
 $bearer = "";
+$program_id = "";
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://api.intdev.registration.payscape.com/programs/46",
+    CURLOPT_URL => "http://api.intdev.registration.payscape.com/programs/".$program_id,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
