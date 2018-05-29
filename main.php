@@ -1,6 +1,6 @@
 <?php
-$bearer = "";
-$program_id = "";
+$bearer = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidGVzdDFAbWFpbC5jb20iLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJpc3MiOiJodHRwczovL3BheXNjYXBlLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YjA1YTJlZGUxZmVlMDY2NzAwYzQ4N2IiLCJhdWQiOiJZVHd2Q2pBd2R4Znd1YnpNWGN3TE1DbENKZWZycEtwTCIsImlhdCI6MTUyNzYyNDQ1MSwiZXhwIjoxNTI3NzEwODUxfQ.21BoNsLZxNHaChKucQxoHW6sT1IuCxUKp-2NI4Ac9nM";
+$program_id = "46";
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -13,7 +13,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
         "Accept: application/json",
-        "Authorization: ".$bearer
+        "Authorization: $bearer"
     ),
 ));
 
@@ -29,6 +29,8 @@ if ($err) {
         echo "Program is still a Draft!";
     }
     $program = json_decode($response, true)[0];
+    $lower_case_title = strtolower($program['title']);
+    $url_title = ucwords(str_replace(" ","-", $lower_case_title));
     if (($program['price_range']['min'] == $program['price_range']['max']) && $program['price_range']['min'] == "0") {
         $price = "Free!";
 
@@ -51,7 +53,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => [
         "Accept: application/json",
-        "Authorization: ".$bearer
+        "Authorization: $bearer"
     ],
 ]);
 
@@ -66,10 +68,8 @@ if ($err) {
     $org = json_decode($response, true)[0];
 }
 
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,7 +98,7 @@ if ($err) {
     <p>Ages: Requires different end point</p>
     <p><bold>Price: </bold><?php echo $price ?></p>
     <p><?php echo $program['description']; ?></p>
-    <a href="http://<?php echo $org['sub_domain_name'] ?>.intdev.registration.payscape.com" ><button><?php echo $program['registration_button_text']; ?></button></a>
+    <a href="http://<?php echo $org['sub_domain_name'] ?>.intdev.registration.payscape.com/programs/<?php echo $program['id'] ?>/" ><button><?php echo $program['registration_button_text']; ?></button></a>
 </span>
 <span class="col-md-3"></span>
 </body>
