@@ -1,6 +1,6 @@
 <?php
-$bearer = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidGVzdDFAbWFpbC5jb20iLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJpc3MiOiJodHRwczovL3BheXNjYXBlLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YjA1YTJlZGUxZmVlMDY2NzAwYzQ4N2IiLCJhdWQiOiJZVHd2Q2pBd2R4Znd1YnpNWGN3TE1DbENKZWZycEtwTCIsImlhdCI6MTUyNzYyNDQ1MSwiZXhwIjoxNTI3NzEwODUxfQ.21BoNsLZxNHaChKucQxoHW6sT1IuCxUKp-2NI4Ac9nM";
-$program_id = "46";
+$bearer = ""; # Your Bearer Token
+$program_id = ""; # Your Program ID will not work with a non authorized ID
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
