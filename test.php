@@ -33,11 +33,20 @@ function CallAPI($method = "GET", $bearer, $url, $id)
             if(strpos($url, 'program') !== false && json_decode($response, true)[0]['status'] == "Draft") {
                 echo "This Program is still a Draft!";
             }
-            $result = json_decode($response, true)[0];
 
+            $result = json_decode($response, true)[0];
+            if (($result['price_range']['min'] == $result['price_range']['max']) && $result['price_range']['min'] == "0") {
+                $result['price'] = "Free!";
+
+            } elseif ($result['price_range']['min'] == $result['price_range']['max'])   {
+                $result['price'] = $result['price_range']['min'];
+            } else {
+                $result['price'] = $result['price_range']['min'] . " - " . $result['price_range']['max'];
+            }
             return $result;
         }
     }
 
 }
+
 ?>
