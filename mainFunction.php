@@ -2,7 +2,7 @@
 
 function CallAPI($bearer, $url, $id)
 {
-    $method = 'GET'
+    $method = 'GET';
     $curl = curl_init();
     if ($method == 'GET') {
         curl_setopt_array($curl, array(
