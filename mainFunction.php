@@ -1,7 +1,8 @@
 <?php
 
-function CallAPI($method, $bearer, $url, $id)
+function CallAPI($bearer, $url, $id)
 {
+    $method = 'GET'
     $curl = curl_init();
     if ($method == 'GET') {
         curl_setopt_array($curl, array(
@@ -45,7 +46,13 @@ function CallAPI($method, $bearer, $url, $id)
 
         return $result;
     }
+    $default = array('title' => 'Something went wrong',
+        'price' => "NULL",
+        'description' => "NULL",
+        'start_date' => "NULL",
 
+        );
+    return $default;
 }
 
 ?>
