@@ -54,5 +54,4 @@ function CallAPI($bearer, $url, $id)
         );
     return $default;
 }
-
 ?>
