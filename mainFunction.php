@@ -2,17 +2,17 @@
 
 /**
  * @param $bearer : bearer token
- * @param $url : url your are
+ * @param $url : url of endpoint you wish to hit
  * @param $id : program ID you want to return
  * @return array
  */
-function CallAPI($bearer, $url, $id)
+function CallAPI($bearer, $endpoint, $id)
 {
     $method = 'GET';
     $curl = curl_init();
     if ($method == 'GET') {
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $url . $id,
+            CURLOPT_URL => "http://api.intdev.registration.payscape.com/".$endpoint . $id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
