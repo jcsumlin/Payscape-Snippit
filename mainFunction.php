@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @param $bearer : bearer token
+ * @param $url : url your are
+ * @param $id : program ID you want to return
+ * @return array
+ */
 function CallAPI($bearer, $url, $id)
 {
     $method = 'GET';
@@ -42,6 +48,8 @@ function CallAPI($bearer, $url, $id)
             } else {
                 $result['price'] = $result['price_range']['min'] . " - " . $result['price_range']['max'];
             }
+            $result['start_date'] = date("F d, Y", strtotime($result['start_date']));
+            $result['end_date'] = date("F d, Y", strtotime($result['end_date']));
         }
 
         return $result;
@@ -54,4 +62,6 @@ function CallAPI($bearer, $url, $id)
         );
     return $default;
 }
+
+
 ?>
