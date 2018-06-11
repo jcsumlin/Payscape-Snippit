@@ -42,7 +42,6 @@ function CallAPI($bearer, $url, $id)
         if (strpos($url, 'program') !== false) {
             if (($result['price_range']['min'] == $result['price_range']['max']) && $result['price_range']['min'] == "0") {
                 $result['price'] = "Free!";
-
             } elseif ($result['price_range']['min'] == $result['price_range']['max'])   {
                 $result['price'] = $result['price_range']['min'];
             } else {
