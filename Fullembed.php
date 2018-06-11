@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<body>
+
 <span>
 <?php
 include 'https://raw.githubusercontent.com/jcsumlin/Payscape-Snippit/master/mainFunction.php';
@@ -19,4 +18,3 @@ $org = CallAPI($bearer, "http://api.intdev.registration.payscape.com/organizatio
     </button>
 </a>
 </span>
-</body>
